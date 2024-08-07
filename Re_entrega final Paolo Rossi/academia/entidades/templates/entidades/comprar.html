@@ -1,0 +1,38 @@
+{% extends 'entidades/index.html' %}
+
+{% block contenido %}
+<h1>Tienda Armor</h1>
+<a
+href="{% url 'comprarForm' %}"
+class="btn btn-primary btn-sm"
+><i class="fa fa-plus fa-lg" title="Crear"> </i>Crear
+</a>
+<br>
+<ul>
+    {% for compra in comprar %}
+    <li>
+        <h2>{{ compra.nombre }}</h2>
+        <p>Stock: {{ compra.stock }}</p>
+        <p>Size: {{ compra.size }}</p>
+        <p>Precio: {{ compra.precio }}</p>
+
+        <a
+            href="{% url 'comprarUpdate' compra.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            <i class="fa fa-edit fa-sm" title="Edit Record"></i>
+        </a>
+
+        <a
+            href="{% url 'comprarDelete' compra.id %}"
+            class="btn btn-danger"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            <i class="fa fa-trash fa-sm" title="Delete Record"></i>
+        </a>
+    </li>
+    {% empty %}
+    <li>No hay productos disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock contenido%}
+

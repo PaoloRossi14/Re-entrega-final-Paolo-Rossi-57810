@@ -1,0 +1,38 @@
+{% extends 'entidades/index.html' %}
+
+{% block contenido %}
+<h1>Alumnos</h1>
+<a
+href="{% url 'alumnoForm' %}"
+class="btn btn-primary btn-sm"
+><i class="fa fa-plus fa-lg" title="Crear"> </i>Crear
+</a>
+<br>
+<ul>
+    {% for alumno in alumnos %}
+    <li>
+        <h2>{{ alumno.nombre }}</h2>
+        <p>Edad: {{ alumno.edad }}</p>
+        <p>Email: {{ alumno.email }}</p>
+        <p>Dirección: {{ alumno.direccion }}</p>
+        <a
+            href="{% url 'alumnoUpdate' alumno.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            <i class="fa fa-edit fa-sm" title="Edit Record"></i>
+        </a>
+
+        <a
+            href="{% url 'alumnoDelete' alumno.id %}"
+            class="btn btn-danger"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            <i class="fa fa-trash fa-sm" title="Delete Record"></i>
+        </a>
+
+    </li>
+    {% empty %}
+    <li>No hay alumnos disponibles.</li>
+    {% endfor %}
+</ul>
+
+{% endblock contenido %}

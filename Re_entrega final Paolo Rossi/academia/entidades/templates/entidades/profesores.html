@@ -1,0 +1,38 @@
+{% extends 'entidades/index.html' %}
+
+{% block contenido %}
+<h1>Profesores</h1>
+<a
+href="{% url 'profesoresForm' %}"
+class="btn btn-primary btn-sm"
+><i class="fa fa-plus fa-lg" title="Crear"> </i>Crear
+</a>
+<br>
+<ul>
+    {% for profesor in profesores %}
+    <li>
+        <h2>{{ profesor.nombre }}</h2>
+        <p>Edad: {{ profesor.edad }}</p>
+        <p>Horario: {{ profesor.horarios }}</p>
+        <p>Profesión: {{ profesor.profesion }}</p>
+        <a
+            href="{% url 'profesorUpdate' profesor.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            <i class="fa fa-edit fa-sm" title="Edit Record"></i>
+        </a>
+
+        <a
+            href="{% url 'profesorDelete' profesor.id %}"
+            class="btn btn-danger"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            <i class="fa fa-trash fa-sm" title="Delete Record"></i>
+        </a>
+
+    </li>
+    {% empty %}
+    <li>No hay profesores disponibles.</li>
+    {% endfor %}
+</ul>
+
+{% endblock contenido %}

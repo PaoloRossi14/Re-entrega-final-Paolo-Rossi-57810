@@ -1,0 +1,27 @@
+{% extends 'entidades/index.html' %}
+
+{% block titulo %}
+
+<h1 class="mb-5">Registrate</h1>                                
+
+{% endblock titulo %}
+
+ 
+
+
+{% block contenido %}   
+                
+<form action="{%url 'registro' %}" method="post">
+
+    {% csrf_token %}
+
+
+    {{ form.as_p }}        
+
+    <button type="submit"> Registrate </button>
+
+</form>
+
+  
+
+{% endblock contenido %}

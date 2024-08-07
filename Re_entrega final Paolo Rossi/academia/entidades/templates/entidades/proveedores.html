@@ -1,0 +1,37 @@
+{% extends 'entidades/index.html' %}
+
+{% block contenido %}
+<h1>Proveedores</h1>
+<a
+href="{% url 'proveedorForm' %}"
+class="btn btn-primary btn-sm"
+><i class="fa fa-plus fa-lg" title="Crear"> </i>Crear
+</a>
+<br>
+<ul>
+    {% for proveedor in proveedores %}
+    <li>
+        <h2>{{ proveedor.nombre }}</h2>
+        <p>Producto: {{ proveedor.producto }}</p>
+        <p>Email: {{ proveedor.email }}</p>        
+        <a
+            href="{% url 'proveedorUpdate' proveedor.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            <i class="fa fa-edit fa-sm" title="Edit Record"></i>
+        </a>
+
+        <a
+            href="{% url 'proveedorDelete' proveedor.id %}"
+            class="btn btn-danger"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            <i class="fa fa-trash fa-sm" title="Delete Record"></i>
+        </a>
+
+    </li>
+    {% empty %}
+    <li>No hay proveedores disponibles.</li>
+    {% endfor %}
+</ul>
+
+{% endblock contenido %}

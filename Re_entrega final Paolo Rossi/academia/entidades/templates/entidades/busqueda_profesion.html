@@ -1,0 +1,13 @@
+{% extends 'entidades/index.html' %}
+
+{% block contenido %}
+  
+<form action="{% url 'BuscarProfesion' %}" method="get">  
+
+  <p>Profesión del profesor : <input type="text" name="profesion"></p>
+
+  <button type="submit"> Buscar </button>
+
+</form>
+
+{% endblock contenido %}

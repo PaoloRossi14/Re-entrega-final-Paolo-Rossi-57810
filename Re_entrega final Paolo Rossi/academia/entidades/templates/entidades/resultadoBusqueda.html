@@ -1,0 +1,27 @@
+{% extends 'entidades/index.html' %}
+
+{% block contenido %}
+  
+<p>Lista de los profesores con profesión: {{profesion}}</p>
+
+{% if profesores %}
+
+<ul>
+  {% for profesor in profesores %}
+    
+    <li>
+      {{profesor.nombre}} - {{profesor.edad}} - {{profesor.horarios}} - {{profesor.profesion}}
+    </li>
+      
+  {% endfor %}
+
+</ul>
+
+{% else %}
+
+  <p>No hubo coincidencias!</p>
+
+{% endif %}
+  
+
+{% endblock contenido %}
